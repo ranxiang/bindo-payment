@@ -1,0 +1,77 @@
+<h1>Payslips</h1>
+
+<% if @payslip %>
+  <div> Result: </div>
+  <div class="field">
+
+    <label>Name: </label>
+    <span><%= @payslip.name %></span>
+    <br>
+
+    <label>Pay period: </label>
+    <span><%= @payslip.pay_period %></span>
+    <br>
+
+    <label>Gross income: </label>
+    <span><%= @payslip.gross_income  %></span>
+    <br>
+
+    <label>Income tax: </label>
+    <span><%= @payslip.income_tax %></span>
+    <br>
+
+    <label>Net income: </label>
+    <span><%= @payslip.net_income %></span>
+    <br>
+
+    <label>Super: </label>
+    <span><%= @payslip.super %></span>
+  </div>
+<% end %>
+
+<br>
+
+<%= form_for(@employee, url: payslips_create_url) do |f| %>
+ <% if @employee.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= pluralize(@employee.errors.count, "error") %> Errors bofore generate:</h2>
+     <ul>
+     <% @employee.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+ <div class="field">
+   <%= f.label :first_name %><br>
+   <%= f.text_field :first_name %>
+ </div>
+
+ <div class="field">
+   <%= f.label :last_name %><br>
+   <%= f.text_field :last_name %>
+ </div>
+
+ <div class="field">
+   <%= f.label :annual_salary %><br>
+   <%= f.text_field :annual_salary %>
+ </div>
+
+ <div class="field">
+   <%= f.label :super_rate %><br>
+   <%= f.text_field :super_rate %>
+   %
+ </div>
+
+ <div class="field">
+   <%= label_tag :payment_start_date %><br>
+   <%= text_field_tag :payment_start_date, @payslip.pay_period if @payslip %>
+   (like: "01 March - 31 March")
+ </div>
+
+ <div class="actions">
+   <%= f.submit "Generate" %>
+ </div>
+
+<% end %>
