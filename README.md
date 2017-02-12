@@ -1,24 +1,23 @@
-# README
+### Requirements
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* ruby2.4 and bundler
 
-Things you may want to cover:
 
-* Ruby version
+### How to run the demo ?
 
-* System dependencies
+1. clone the project by command:
+```shell
+\> git clone git@github.com:ranxiang/bindo-payment.git
+```
 
-* Configuration
+2. install necessary gems by command:
+```shell
+\> bundle
+```
 
-* Database creation
+3. start the web server by command:
+```shell
+\>bundle exec rails s
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. visit http://localhost:3000 by web browser.
